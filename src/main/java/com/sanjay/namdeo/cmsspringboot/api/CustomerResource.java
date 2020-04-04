@@ -18,7 +18,7 @@ public class CustomerResource {
         return customerService.addCustomer(customer);
     }
 
-    @GetMapping
+    @GetMapping(value = "/getAll")
     public List<Customer> getCustomers() {
         return customerService.getAllCustomers();
     }

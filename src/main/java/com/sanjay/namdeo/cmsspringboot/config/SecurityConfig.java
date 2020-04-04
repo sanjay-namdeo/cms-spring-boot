@@ -35,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic().and().authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/customers/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/customers/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/actuator/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/customers/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/customers/**").hasRole("ADMIN")
                 .and().csrf().disable().headers().frameOptions().disable();

@@ -6,6 +6,7 @@ import com.sanjay.namdeo.cmsspringboot.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,7 +17,9 @@ public class CustomerService {
 
     // Get all customers
     public List<Customer> getAllCustomers() {
-        return customerDAO.findAll();
+        List<Customer> customerList = new ArrayList<>();
+        customerDAO.findAll().forEach(customerList::add);
+        return customerList;
     }
 
     // Add a new customer

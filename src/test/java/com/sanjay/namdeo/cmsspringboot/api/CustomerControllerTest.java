@@ -13,49 +13,49 @@ import java.util.Arrays;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CustomerResourceTest {
+public class CustomerControllerTest {
     @Autowired
-    private CustomerResource customerResource;
+    private CustomerController customerController;
 
     @Before
     public void beforeTest() {
         Customer[] customers = {new Customer("Vaibhav", "vaibah@amil.com"), new Customer("Anshul", "ansul.com"),
                 new Customer("Saurabh", "sauravh.com"), new Customer("Surendra", "suredra.com")};
-        customerResource.addAllCustomers(Arrays.asList(customers));
+        customerController.addAllCustomers(Arrays.asList(customers));
     }
 
     @After
     public void afterTest() {
-        customerResource.deleteAll();
+        customerController.deleteAll();
     }
 
     @Test
     public void addCustomer() {
         Customer newCustomer = new Customer("Sanjay Namdeo", "sanjay.namdeo@live.com");
-        Customer savedCustomer = customerResource.addCustomer(newCustomer);
+        Customer savedCustomer = customerController.addCustomer(newCustomer);
         assert newCustomer.equals(savedCustomer);
     }
 
     @Test
     public void getCustomers() {
-        assert customerResource.getCustomers().size() == 5;
+        assert customerController.getCustomers().size() == 5;
     }
 
     @Test
     public void getCustomer() {
-        assert customerResource.getCustomer(1).equals(new Customer("Vaibhav", "vaibah@amil.com"));
+        assert customerController.getCustomer(1).equals(new Customer("Vaibhav", "vaibah@amil.com"));
     }
 
     @Test
     public void deleteCustomer() {
-        customerResource.deleteCustomer(1);
-        assert customerResource.getCustomer(1) == null;
+        customerController.deleteCustomer(1);
+        assert customerController.getCustomer(1) == null;
     }
 
     @Test
     public void updateCustomer() {
-        customerResource.updateCustomer(1, new Customer("Sanjay", "sanjay@email.com"));
-        assert customerResource.getCustomer(1).equals(new Customer("Sanjay", "sanjay@email.com"));
+        customerController.updateCustomer(1, new Customer("Sanjay", "sanjay@email.com"));
+        assert customerController.getCustomer(1).equals(new Customer("Sanjay", "sanjay@email.com"));
     }
 
 

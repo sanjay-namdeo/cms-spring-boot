@@ -1,6 +1,6 @@
 package com.sanjay.namdeo.cmsspringboot;
 
-import com.sanjay.namdeo.cmsspringboot.api.CustomerResource;
+import com.sanjay.namdeo.cmsspringboot.api.CustomerController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +11,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class CmsSpringBootApplicationTests {
 	@Autowired
-	private CustomerResource customerResource;
+	private CustomerController customerController;
 
 	@Test
-	public void contextLoads() throws Exception {
-		assert customerResource != null;
+	public void contextLoads() {
+		assert customerController != null;
 	}
 }

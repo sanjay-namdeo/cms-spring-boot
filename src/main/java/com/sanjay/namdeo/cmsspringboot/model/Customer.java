@@ -14,6 +14,14 @@ public class Customer {
     private String name;
     private String email;
 
+    public Customer(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
+    public Customer() {
+    }
+
     public int getId() {
         return id;
     }
@@ -36,5 +44,11 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Customer customer = (Customer) obj;
+        return this.name.equalsIgnoreCase(customer.name) && this.email.equalsIgnoreCase(customer.email);
     }
 }

@@ -18,6 +18,11 @@ public class CustomerResource {
         return customerService.addCustomer(customer);
     }
 
+    @PostMapping(value = "addAll")
+    public List<Customer> addAllCustomers(@RequestBody List<Customer> customers) {
+        return customerService.addAll(customers);
+    }
+
     @GetMapping(value = "/getAll")
     public List<Customer> getCustomers() {
         return customerService.getAllCustomers();
@@ -31,6 +36,11 @@ public class CustomerResource {
     @DeleteMapping(value = "/{customerId}")
     public void deleteCustomer(@PathVariable int customerId) {
         customerService.deleteCustomer(customerId);
+    }
+
+    @DeleteMapping(value = "deleteAll")
+    public void deleteAll() {
+        customerService.deleteAll();
     }
 
     @PutMapping(value = "/{customerId}")

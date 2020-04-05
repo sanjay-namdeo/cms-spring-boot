@@ -27,10 +27,20 @@ public class CustomerService {
         return customerDAO.save(customer);
     }
 
+    // Add a new customer
+    public List<Customer> addAll(List<Customer> customers) {
+        Iterable<Customer> customerIterator = customerDAO.saveAll(customers);
+        List<Customer> customerList = new ArrayList<>();
+        customerIterator.forEach(customer -> {
+            customerList.add(customer);
+        });
+        return customerList;
+    }
+
     // Get customer by Id
     public Customer getCustomer(int customerId) {
         Optional<Customer> optionalCustomer = customerDAO.findById(customerId);
-        if(!optionalCustomer.isPresent())
+        if (!optionalCustomer.isPresent())
             throw new CustomerNotFoundException("Customer not found.");
         return optionalCustomer.get();
     }
@@ -38,6 +48,10 @@ public class CustomerService {
     // Delete customer
     public void deleteCustomer(int customerId) {
         customerDAO.deleteById(customerId);
+    }
+
+    public void deleteAll() {
+        customerDAO.deleteAll();
     }
 
     // Update customer
